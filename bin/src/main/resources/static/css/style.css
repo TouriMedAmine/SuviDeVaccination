@@ -1,0 +1,72 @@
+.red{
+	color: red;
+}
+.redblod{
+	color: red;
+	font-weight: bold;
+	font-size:15px;
+}
+.black{
+	color: black;
+}
+.spacer{
+	margin-top: 20px;
+}
+.mil{
+	margin-left: 320px;
+}
+
+.centre {
+	margin-top: 30px;
+    margin-left: 330px;
+}
+
+.centre2 {
+	margin-top: 150px;
+    margin-left: 300px;
+}
+
+.log{
+	margin-left : 300px;
+}
+
+.log2{
+	margin-left : 1000px;
+}
+.titre {
+background-color: #E8EEF4;
+}
+
+.etat {
+	color: #3FEE16;
+	font-weight: bold;
+}
+
+.mybtn{
+	background-color: #EE1654;
+	color: #F4FCF2;
+}
+
+.mybtn2{
+	background-color: #2C353D;
+	color: #F4FCF2;
+}
+
+.page{
+	background-color: #2C353D;
+	color : white;
+}
+.image {
+  background-image: url("img.jpg");
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.bold{
+	font-weight: bold;
+	font-size:60px;
+}

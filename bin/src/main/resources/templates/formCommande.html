@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8"/>
+<title>Commande</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{css/bootstrap.min.css}"/>
+
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{css/style.css}"/>
+</head>
+<body>
+<div class="container spacer mil col-md-6 col-xs-12" layout:fragment="custom-content">
+		<div class="panel panel-default">
+			<div class="panel-heading">Lancement d'une Commande</div>
+			<div class="panel-body">
+				<form th:action= "@{/operateur/saveCommande(id=${vaccin.id})}" method="post">
+							
+					
+					<div class="form-group">
+						<label class="control-label">Date : </label>
+						<input type="date" class= "form-control date" name ="date" th:value = "${commande.date}" />
+						<span class="red" th:errors="${commande.date}"></span>
+					</div> 
+					
+					<div class="form-group">
+						<label class="control-label">Quantité : </label>
+						<input class="form-control" type="text" name="quantite" th:value="${commande.quantite}"/>
+						<span class="red" th:errors="${commande.quantite}"></span>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-primary">Lancer la Commande</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

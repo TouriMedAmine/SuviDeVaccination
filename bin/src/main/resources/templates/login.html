@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{css/bootstrap.min.css}"/>
+
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{css/style.css}"/>
+</head>
+<body class = "image">
+	
+	<h1 class= "centre2 bold">Suivi Vaccination - Maroc</h1>
+	<div class="container spacer mil col-md-6 col-xs-12 centre" >
+		<div class = "container">
+			<span class = "redblod" th:if="${param.error}">
+				Identifiant ou mot de passe incorrect
+			</span>
+			
+			<span class = "redblod" th:if="${param.logout}">
+				Vous avez été déconnecté
+			</span>
+			
+		</div>
+		<div class="panel panel-default  ">
+			<div class="panel-heading">Authentification</div>
+			<div class="panel-body ">
+				<form th:action="@{/login}" method="post">
+					<div class="form-group">
+						<label class="control-label black ">Login : </label>
+						<input class="form-control" type="text" name="username"/>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label black">Mot de passe : </label>
+						<input class="form-control" type="password" name="password" />
+					</div>	
+					
+					<div>
+						<button type="submit" class="btn mybtn2">Se connecter</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

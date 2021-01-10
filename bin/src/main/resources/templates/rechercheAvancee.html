@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout}">
+		
+<head>
+<meta charset="utf-8"/>
+<title>RDV</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{css/bootstrap.min.css}"/>
+		
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{css/style.css}"/>
+		
+</head>
+<body >
+
+<div layout:fragment="custom-content" >
+	<div class="container spacer" >
+		<form th:action="@{/operateur/rechercheAvancee}" method="get">
+			
+			<label>Date  : </label>
+			<input type="date" name ="date" th:value = "${date}" />
+			
+			<label>Type de vaccination  : </label>
+			<input type="text" name ="type" th:value = "${type}" />
+			
+			<label>Sexe : </label>
+			<select  th:field="*{sexe}">
+    			<option th:value="'M'" th:text="Male"></option>
+   				<option th:value="'F'" th:text="Female"></option>
+			</select>
+		
+			<button class="btn btn-primary">Chercher</button>
+		</form>
+	</div>
+
+	<div class="container">
+	<h3>Liste des enfant</h3>
+	
+	<table class="table">
+	
+		<thead>
+			<tr>
+			
+				<th>ID</th><th>Nom</th><th>Prénom</th>
+				<th>Date Naissance</th><th>Lieu Naissance</th>
+				<th>sexe</th>
+				<th>Date de vaccination</th>
+				<th>Type de vaccine</th>
+
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="e:${list}">
+			
+				<td th:text="${e.calendrierVaccination.enfant.id}"></td>
+				
+				<td th:text="${e.calendrierVaccination.enfant.nom}"></td>
+				<td th:text="${e.calendrierVaccination.enfant.prenom}"></td>
+				<td th:text="${e.calendrierVaccination.enfant.naissance}"></td>
+				
+				<td th:text="${e.calendrierVaccination.enfant.lieu_naissance}"></td>
+				<td th:text="${e.calendrierVaccination.enfant.sexe}"></td>
+				
+				<td th:text="${e.date}"></td>
+				<td th:text="${e.type_vaccin}"></td>
+				
+				
+				
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	
+</div>
+</body>
+</html>

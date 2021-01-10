@@ -37,6 +37,31 @@ public interface FicheVaccinRepository extends JpaRepository<FicheVaccin, Long>{
 			+ " and e.sexe like :z"
 			+ " and e.centreSante.id like :u")
 	public List<FicheVaccin> recherchavancee(@Param("x")Date date, @Param("y")String type,@Param("z")String sexe, @Param("u")Long idcentre);
+	
+	@Query("select f from FicheVaccin f"
+			+ "	inner join CalendrierVaccination c on f.calendrierVaccination = c.id "
+			+ " inner join Enfant e on c.enfant = e.id "
+			+ " where f.etat = 1"
+			+ " and f.type_vaccin like :y"
+			+ " and e.centreSante.id like :u")
+	public List<FicheVaccin> recherchavanceeParTypeV(@Param("y")String type, @Param("u")Long idcentre);
+	
+	@Query("select f from FicheVaccin f"
+			+ "	inner join CalendrierVaccination c on f.calendrierVaccination = c.id "
+			+ " inner join Enfant e on c.enfant = e.id "
+			+ " where f.etat = 1"
+			+ " and e.sexe like :z"
+			+ " and e.centreSante.id like :u")
+	public List<FicheVaccin> recherchavanceeParSexe(@Param("z")String sexe, @Param("u")Long idcentre);
+	
+	@Query("select f from FicheVaccin f"
+			+ " inner join CalendrierVaccination c on f.calendrierVaccination = c.id"
+			+ " inner join Enfant e on c.enfant = e.id"
+			+ " where f.date >= :debutMois and f.date <= :finMois and f.etat=0"
+			+ " and e.centreSante.id like :u")
+	public List<FicheVaccin> chercherParMois(@Param("debutMois")Date debutMois, @Param("finMois")Date finMois, @Param("u")Long idcentre);
+	
+	
 }
 
 

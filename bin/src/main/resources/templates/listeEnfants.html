@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout}">
+		
+<head>
+<meta charset="utf-8"/>
+<title>Enfants</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{css/bootstrap.min.css}"/>
+		
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{css/style.css}"/>
+		
+</head>
+<body >
+
+<div layout:fragment="custom-content" >
+	
+	<div class="container">
+	<h3>Liste des Enfants</h3>
+	<table class="table">
+	
+		<thead>
+			<tr>
+				<th>ID</th><th>Nom</th><th>Prénom</th><th>Date naissance</th><th>CIN tuteur</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="e:${listEnfants}">
+				<td th:text="${e.id}"></td>
+				<td th:text="${e.nom}"></td>
+				<td th:text="${e.prenom}"></td>
+				<td th:text="${e.naissance}"></td>
+				<td th:text="${e.cin_tuteur}"></td>
+				
+				<td><a th:href="@{/operateur/calendrier(id=${e.id})}">Afficher Calendrier</a></td>
+				<td><a th:href="@{/operateur/formedit(id=${e.id})}">Modifier</a></td>
+				
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Hello</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{css/bootstrap.min.css}"/>
+		
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{css/style.css}"/>
+		
+</head>
+<body class="titre">
+	<div class="container centre" >
+		
+				<h1>INSEA Medical Centre</h1>
+				
+				<div class="centre2" >
+				
+					<a th:href="@{/admin/patients}">Espace Admine</a>
+					<a th:href="@{/medcin/patients}">Espace Médecin</a>
+				</div>
+				
+	</div>
+		
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8"/>
+<title>Modifier Enfant</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{/css/bootstrap.min.css}"/>
+
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{/css/style.css}"/>
+</head>
+<body>
+	<div class="container spacer mil col-md-6 col-xs-12" layout:fragment="custom-content">
+		<div class="panel panel-default">
+			<div class="panel-heading">Modification d'un enfant</div>
+			<div class="panel-body">
+				<form th:action="@{/operateur/edit}" method="post">
+				
+					<div class="form-group">
+						<label class="control-label">ID : </label>
+						<input class="form-control" type="text" name="id" th:value="${enfant.id}" />
+						<span class="red" th:errors="${enfant.id}"></span>
+					</div>
+				
+					<div class="form-group">
+						<label class="control-label">Nom: </label>
+						<input class="form-control" type="text" name="nom" th:value="${enfant.nom}" disabled="disabled"/>
+						<span class="red" th:errors="${enfant.nom}"></span>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">Prénom: </label>
+						<input class="form-control" type="text" name="prenom" th:value="${enfant.prenom}" disabled="disabled"/>
+						<span class="red" th:errors="${enfant.prenom}"></span>
+					</div>	
+					
+					
+					<div class="form-group">
+						<label class="control-label">Adresse: </label>
+						<input class="form-control" type="text" name="adresse" th:value="${enfant.adresse}"/>
+						<span class="red" th:errors="${enfant.adresse}"></span>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">Téléphone tuteur: </label>
+						<input class="form-control" type="text" name="tele_tuteur" th:value="${enfant.tele_tuteur}"/>
+						<span class="red" th:errors="${enfant.tele_tuteur}"></span>
+					</div>
+					
+					<div>
+						<button type="submit" class="btn btn-primary">Enregistrer</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

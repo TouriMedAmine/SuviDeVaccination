@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8"/>
+<title>Enfant</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{/css/bootstrap.min.css}"/>
+		
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{/css/style.css}"/>
+		
+</head>
+<body>
+<div class="container spacer mil col-md-6 col-xs-12" layout:fragment="custom-content">
+		<div class="panel panel-default">
+			<div class="panel-heading">Confirmation</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label>ID : </label>
+					<label th:text="${enfant.id}"></label>
+				</div>
+				<div class="form-group">
+					<label>Nom : </label>
+					<label th:text="${enfant.nom}"></label>
+				</div>
+				<div class="form-group">
+					<label>Prénom : </label>
+					<label th:text="${enfant.prenom}"></label>
+				</div>
+				<div class="form-group">
+					<label>Sexe : </label>
+					<label th:text="${enfant.sexe}"></label>
+				</div>
+				<div class="form-group">
+					<label>Nom & Prénom Père : </label>
+					<label th:text="${enfant.nom_prenom_pere}"></label>
+				</div>
+				<div class="form-group">
+					<label>Nom & Prénom Mère : </label>
+					<label th:text="${enfant.nom_prenom_mere}"></label>
+				</div>
+				<div class="form-group">
+					<label>Date de Naissance : </label>
+					<label th:text="${enfant.naissance}"></label>
+				</div>
+				<div class="form-group">
+					<label>Lieu de naissance : </label>
+					<label th:text="${enfant.lieu_naissance}"></label>
+				</div>
+				<div class="form-group">
+					<label>Adresse : </label>
+					<label th:text="${enfant.adresse}"></label>
+				</div>
+				<div class="form-group">
+					<label>CIN tuteur : </label>
+					<label th:text="${enfant.cin_tuteur}"></label>
+				</div>
+				<div class="form-group">
+					<label>Téléphone tuteur : </label>
+					<label th:text="${enfant.tele_tuteur}"></label>
+				</div>
+				
+			</div>
+		</div>
+</div>
+
+</body>
+</html>

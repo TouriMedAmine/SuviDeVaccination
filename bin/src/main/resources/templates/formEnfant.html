@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8"/>
+<title>Enfant</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{/css/bootstrap.min.css}"/>
+
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div layout:fragment="custom-content">
+	<!-- <div class="container spacer mil col-md-6 col-xs-12"  >-->
+		<div class="panel panel-default">
+			<div class="panel-heading">Saisie d'une enfant</div>
+			<div class="panel-body">
+				<form th:action= "@{/operateur/save}" method="post">
+					
+					<div class="container spacer col-md-6 col-xs-12"  >
+					<div class="form-group">
+						<label class="control-label">Nom: </label>
+						<input class="form-control" type="text" name="nom" th:value="${enfant.nom}"/>
+						<span class="red" th:errors="${enfant.nom}"></span>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">Prénom: </label>
+						<input class="form-control" type="text" name="prenom" th:value="${enfant.prenom}"/>
+						<span class="red" th:errors="${enfant.prenom}"></span>
+					</div>	
+					
+					<div class="form-group">
+						<label class="control-label">Sexe : </label>
+						<select class="form-control" th:field="*{enfant.sexe}">
+    						<option th:value="'M'" th:text="Male"></option>
+   							 <option th:value="'F'" th:text="Female"></option>
+						</select>
+						<span class="red" th:errors="${enfant.sexe}"></span>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">Nom & Prénom père: </label>
+						<input class="form-control" type="text" name="nom_prenom_pere" th:value="${enfant.nom_prenom_pere}"/>
+						<span class="red" th:errors="${enfant.nom_prenom_pere}"></span>
+					</div>	
+					
+					<div class="form-group">
+						<label class="control-label">Nom & Prénom mère: </label>
+						<input class="form-control" type="text" name="nom_prenom_mere" th:value="${enfant.nom_prenom_mere}"/>
+						<span class="red" th:errors="${enfant.nom_prenom_mere}"></span>
+					</div>	
+					
+					<div class="form-group">
+						<label class="control-label">Date Naissance: </label>
+						<input type="date" class= "form-control date" name ="naissance" th:value = "${enfant.naissance}" />
+						<span class="red" th:errors="${enfant.naissance}"></span>
+					</div> 
+					
+					
+					
+					<div class="form-group">
+						<label class="control-label">Lieu Naissance: </label>
+						<input class="form-control" type="text" name="lieu_naissance" th:value="${enfant.lieu_naissance}"/>
+						<span class="red" th:errors="${enfant.lieu_naissance}"></span>
+					</div>
+					</div>
+					
+					<div class="container spacer col-md-6 col-xs-12"  >
+					<div class="form-group">
+						<label class="control-label">Adresse: </label>
+						<input class="form-control" type="text" name="adresse" th:value="${enfant.adresse}"/>
+						<span class="red" th:errors="${enfant.adresse}"></span>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">CIN tuteur: </label>
+						<input class="form-control" type="text" name="cin_tuteur" th:value="${enfant.cin_tuteur}"/>
+						<span class="red" th:errors="${enfant.cin_tuteur}"></span>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">Téléphone tuteur: </label>
+						<input class="form-control" type="text" name="tele_tuteur" th:value="${enfant.tele_tuteur}"/>
+						<span class="red" th:errors="${enfant.tele_tuteur}"></span>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">Date prévu pour le vaccin 1 : </label>
+						<input class= "form-control date" type="date" name="date1" th:value="${date1}"/>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">Date prévu pour le vaccin 2 : </label>
+						<input class= "form-control date" type="date" name="date2" th:value="${date2}"/>
+					</div>
+					
+					<div class="form-group">
+						<label>Date prévu pour le vaccin 3 : </label>
+						<input class= "form-control date" type="date" name="date3" th:value="${date3}"/>
+					</div>
+					
+					<div>
+						<button type="submit" class="btn btn-primary">Enregistrer</button>
+					</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout}">
+		
+<head>
+<meta charset="utf-8"/>
+<title>Enfants</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{css/bootstrap.min.css}"/>
+		
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{css/style.css}"/>
+		
+</head>
+<body >
+
+<div layout:fragment="custom-content" >
+
+	<div class="container">
+	<h3>Stock des Vaccin</h3>
+	<table class="table">
+	
+		<thead>
+			<tr>
+				<th>ID</th><th>Type de Vaccin</th><th>Quantité restant dans le stock</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="e:${listStock}">
+				<td th:text="${e.id}"></td>
+				<td th:text="${e.type_vaccin}"></td>
+				<td th:text="${e.quantiteStock}"></td>
+				
+				<td><a th:href="@{/operateur/commande(id=${e.id})}">Lancer une Commande</a></td>
+				
+				<!--<td><a th:href="@{/operateur/formedit(id=${e.id})}">Modifier</a></td>-->
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	
+</div>
+</body>
+</html>

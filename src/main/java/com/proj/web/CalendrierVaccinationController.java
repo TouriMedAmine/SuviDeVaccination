@@ -1,8 +1,11 @@
 package com.proj.web;
 
 import java.security.Principal;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -136,5 +139,90 @@ public class CalendrierVaccinationController {
 		
 		return "rechercheAvancee";
 	}
+	
+	@RequestMapping(value="/gestionnaire/tableauxBords/vaccinParMois", method=RequestMethod.GET)
+	public String VaccinParMois(Model model, HttpServletRequest request ) {
+		Principal principal = request.getUserPrincipal();
+        User user = userRepository.chercher(principal.getName());
+        
+        Long idcentre = user.getCentreSnate().getId();
+        int year = 2020;
+        int month = 1;
+        int day = 1;
+        
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        
+		Date debutMois = new Date(year, month,day);
+		day = 31;
+		Date finMois = new Date(year, month, day);
+		
+		List<FicheVaccin> ficheVaccins1 = ficheVaccinRepository.chercherParMois(debutMois, finMois, idcentre);
+		month = 2;
+		debutMois.setMonth(month);
+		finMois.setMonth(month);
+		List<FicheVaccin> ficheVaccins2 = ficheVaccinRepository.chercherParMois(debutMois, finMois, idcentre);
+		
+		month = 3;
+		debutMois.setMonth(month);
+		finMois.setMonth(month);
+		List<FicheVaccin> ficheVaccins3 = ficheVaccinRepository.chercherParMois(debutMois, finMois, idcentre);
+		
+		month = 4;
+		debutMois.setMonth(month);
+		finMois.setMonth(month);
+		List<FicheVaccin> ficheVaccins4 = ficheVaccinRepository.chercherParMois(debutMois, finMois, idcentre);
+		
+		Map<String, Integer> nbrEnfantVaccineParMois = new LinkedHashMap<>();
+		int nombreParMois =  ficheVaccins1.size();
+		
+		nbrEnfantVaccineParMois.put("Janvier", nombreParMois);
+		nombreParMois = ficheVaccins2.size();
+		nbrEnfantVaccineParMois.put("Fevrier", nombreParMois);
+		nombreParMois = ficheVaccins3.size();
+		nbrEnfantVaccineParMois.put("Mars", nombreParMois);
+		nombreParMois = ficheVaccins4.size();
+		nbrEnfantVaccineParMois.put("Avril", nombreParMois);
+		
+		model.addAttribute("nbrEnfantVaccineParMois", nbrEnfantVaccineParMois);
+		
+		return "GraphNbrVaccineMois";
+	}
+	
+	@RequestMapping(value="/gestionnaire/tableauxBords/vaccinParType", method=RequestMethod.GET)
+	public String rechercheParType(Model model, HttpServletRequest request) {
+		Principal principal = request.getUserPrincipal();
+        User user = userRepository.chercher(principal.getName());
+        
+        Long idcentre = user.getCentreSnate().getId();
+        
+        List<FicheVaccin> listeVaccinType1 = ficheVaccinRepository.recherchavanceeParTypeV("Vaccin contre Hépatitie B", idcentre);
+        List<FicheVaccin> listeVaccinType2 = ficheVaccinRepository.recherchavanceeParTypeV("Vaccin anti BCG", idcentre);
+        List<FicheVaccin> listeVaccinType3 = ficheVaccinRepository.recherchavanceeParTypeV("", idcentre);
+        
+        model.addAttribute("Vaccin_contre_Hepatitie_B", listeVaccinType1.size());
+        model.addAttribute("Vaccin_anti_BCG", listeVaccinType2.size());
+        model.addAttribute("Vaccin_anti_Polio_oral", listeVaccinType3.size());
+        
+		return "GraphVaccinParType";
+	}
+	
+	@RequestMapping(value="/gestionnaire/tableauxBords/vaccinParSexe", method=RequestMethod.GET)
+	public String rechercheParSexe(Model model, HttpServletRequest request) {
+		Principal principal = request.getUserPrincipal();
+        User user = userRepository.chercher(principal.getName());
+        
+        Long idcentre = user.getCentreSnate().getId();
+        
+        List<FicheVaccin> listeVaccinGarcon = ficheVaccinRepository.recherchavanceeParSexe("M", idcentre);
+        List<FicheVaccin> listeVaccinfille = ficheVaccinRepository.recherchavanceeParSexe("F", idcentre);
+        
+        
+        model.addAttribute("nbrGarconsVaccine", listeVaccinGarcon.size());
+        model.addAttribute("nbrFillesVaccine", listeVaccinfille.size());
+        
+        
+		return "GraphVaccinParSexe";
+	}
+	
 	
 }
