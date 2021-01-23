@@ -61,6 +61,13 @@ public interface FicheVaccinRepository extends JpaRepository<FicheVaccin, Long>{
 			+ " and e.centreSante.id like :u")
 	public List<FicheVaccin> chercherParMois(@Param("debutMois")Date debutMois, @Param("finMois")Date finMois, @Param("u")Long idcentre);
 	
+	@Query("select f from FicheVaccin f"
+			+ "	inner join CalendrierVaccination c on f.calendrierVaccination = c.id "
+			+ " inner join Enfant e on c.enfant = e.id "
+			+ " where f.date >= :dateDebut and f.date <= :dateFin and f.etat=1"
+			+ " and f.type_vaccin like :y"
+			+ " and e.centreSante.id like :u")
+	public List<FicheVaccin> vaccinsConosomesPeriodeType(@Param("dateDebut")Date dateDebut, @Param("dateFin")Date dateFin, @Param("y")String type, @Param("u")Long idcentre);
 	
 }
 
