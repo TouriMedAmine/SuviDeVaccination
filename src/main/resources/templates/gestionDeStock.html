@@ -19,7 +19,7 @@
 	<div class="container spacer" >
 		<form th:action="@{/operateur/recherche}" method="get">
 			<label>Type de vaccin : </label>
-			<input type="text" name="cin" th:value="${cin}"/>
+			<input type="text" name="typeVaccin" th:value="${typeVaccin}"/>
 			<label>Date de debut : </label>
 			<input type="date" name ="dateDebut" th:value = "${date}" />
 			<label>Date de fin : </label>
